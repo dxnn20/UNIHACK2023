@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'maps_page.dart';
+import 'components/drawer.dart';
 
 void main() {
   runApp( const MyApp());
@@ -24,15 +26,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
    const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -64,65 +57,10 @@ int _counter = 0;
     return Scaffold(
       appBar: widget.buildAppBar(context),
 
+      drawer: AppDrawer(),
 
-      drawer: Drawer(
-        backgroundColor:  Colors.blue[30],
-        child: Column(
-          children: [
-            //header
-            const DrawerHeader(
-                child: Icon(
-                  Icons.person,
-                  color: Colors.blue,
-                  size: 64,
-                )
-            ),
-            //home list tile
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            //profile list tile
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profile'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.location_on),
-              title: const Text('Near me'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            //logout list tile
-            Spacer(),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Logout'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
       body: const SingleChildScrollView(
 
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -141,7 +79,7 @@ int _counter = 0;
         imagePath: 'assets/paid_event_image.jpg',
       ),
 
-      _Card(
+        _Card(
       title: 'Exciting Workshop',
       description:
       'Join us for a hands-on workshop where you can learn new skills and techniques. This is a fantastic opportunity to enhance your knowledge!',
@@ -149,11 +87,11 @@ int _counter = 0;
       imagePath: 'assets/workshop_image.jpg',
     ),
 
-    _Card(
-      title: 'Special Performance',
-      description: 'Experience a one-of-a-kind performance by talented artists.',
-      isFree: true,
-      imagePath: 'assets/special_performance_image.jpg',
+        _Card(
+        title: 'Special Performance',
+        description: 'Experience a one-of-a-kind performance by talented artists.',
+        isFree: true,
+        imagePath: 'assets/special_performance_image.jpg',
     ),
 
     ],
