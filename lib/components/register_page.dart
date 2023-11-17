@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:unihack/main.dart';
 import 'button.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -111,8 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(height: 10),
 
             //sing in button
-            MyButton(onTap: () {}, text: "Sign Up"),
-
+            MyButton(text: 'sign up'),
             const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

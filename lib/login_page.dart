@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unihack/components/button.dart';
+import 'main.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -15,9 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  Future Login() async {
-    
-  }
+  Future Login() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -89,17 +88,14 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 30),
 
             //sing in button
-            MyButton(
-                onTap: (){},
-                text: "Sign In"
-            ),
+            MyButton( text: 'Sign In'),
 
             const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Not a member?'),
-                SizedBox(width: 5),
+                const Text('Not a member?'),
+                const SizedBox(width: 5),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: const Text(

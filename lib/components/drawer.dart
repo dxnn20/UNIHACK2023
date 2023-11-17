@@ -39,7 +39,7 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Home'),
             onTap: () {
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage(title: 'WhaToDoIn'))
+                  MaterialPageRoute(builder: (context) =>MyHomePage(title: 'WhaToDoIn'))
               );
             }
           ),
