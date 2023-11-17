@@ -96,9 +96,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               onPressed: () {
-
-
-
+                    Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => const MyHomePage(title: 'WhaToDoIn'))
+                );
               },
               child: const Text(
                   'Login',
@@ -123,7 +123,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-
             const Spacer(),
           ],
         ),
