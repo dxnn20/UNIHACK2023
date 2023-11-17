@@ -65,26 +65,51 @@ int _counter = 0;
       appBar: widget.buildAppBar(context),
 
 
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFF479FD5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
           children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.home),
-              onPressed: () {},
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF479FD5),
+              ),
+              child: Text(
+                'PlanIT',
+                style: TextStyle(
+                  color: Color(0xFFD7D7D7),
+                  fontSize: 24,
+                ),
+              ),
             ),
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {},
+            ListTile(
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            IconButton(
-              icon: const Icon(Icons.calendar_today),
-              onPressed: () {},
+            ListTile(
+              title: const Text('My Events'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            IconButton(
-              icon: const Icon(Icons.person),
-              onPressed: () {},
+            ListTile(
+              title: const Text('My Profile'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Log Out'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
           ],
         ),
