@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'components/drawer.dart';
 
 class MapsPage extends StatefulWidget{
   MapsPage({super.key});
@@ -22,14 +23,13 @@ class _MapsPageState extends State<MapsPage>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      drawer: AppDrawer(),
 
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11.0,
-        ),
+      appBar: AppBar(
+        title: const Text('Maps'),
+        backgroundColor: const Color(0xFF479FD5),
       ),
+
     );
 }
 }
