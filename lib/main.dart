@@ -2,6 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:unihack/auth/login_or_register.dart';
 import 'components/drawer.dart';
 
+class User {
+  final String name;
+  final String email;
+  final String? profileImage;
+
+  User({
+    required this.name,
+    required this.email,
+    this.profileImage,
+  });
+}
+
 void main() {
   runApp( const MyApp());
 }
@@ -42,14 +54,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State< MyHomePage> {
-int  _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-}
-
   @override
   Widget build(BuildContext context) {
 
@@ -97,7 +101,7 @@ int  _counter = 0;
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {},
         tooltip: 'Increment',
         child:  const Icon(Icons.add),
       ),

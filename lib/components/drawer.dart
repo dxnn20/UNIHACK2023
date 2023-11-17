@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unihack/main.dart';
 import 'package:unihack/maps_page.dart';
-import 'package:flutter/material.dart';
 import 'package:unihack/profile_page.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -11,7 +10,6 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-
           const SizedBox(
             height: 150.0,
             child : DrawerHeader(
@@ -49,9 +47,13 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.person),
             title: const Text('Profile'),
             onTap: () {
+
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => ProfilePage())
+                  MaterialPageRoute(builder: (context) => ProfilePage(
+                  )
+                  )
               );
+
             },
           ),
           ListTile(
@@ -59,7 +61,7 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Near Me'),
             onTap: () {
               Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const MapsPage())
+              MaterialPageRoute(builder: (context) => MapsPage())
               );
             },
           ),
