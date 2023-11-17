@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:unihack/main.dart';
 
 class MyButton extends StatelessWidget {
-  final Function()? onTap;
+  //final Function()? onTap;
   final String text;
-  const MyButton({super.key, required this.onTap, required this.text});
-
-
+  const MyButton({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +20,10 @@ class MyButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-
-
-
-        },
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage(title: 'WhaToDoIn'))
+                );
+              },
         child: Center(
           child: Text(
             text,
