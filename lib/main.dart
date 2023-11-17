@@ -65,26 +65,56 @@ int _counter = 0;
       appBar: widget.buildAppBar(context),
 
 
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFF479FD5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.home),
-              onPressed: () {},
+      drawer: Drawer(
+        backgroundColor:  Colors.blue[30],
+        child: Column(
+          children: [
+            //header
+            const DrawerHeader(
+                child: Icon(
+                  Icons.person,
+                  color: Colors.blue,
+                  size: 64,
+                )
             ),
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {},
+            //home list tile
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            IconButton(
-              icon: const Icon(Icons.calendar_today),
-              onPressed: () {},
+            //profile list tile
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
-            IconButton(
-              icon: const Icon(Icons.person),
-              onPressed: () {},
+            ListTile(
+              leading: const Icon(Icons.location_on),
+              title: const Text('Near me'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            //logout list tile
+            Spacer(),
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Logout'),
+              onTap: () {
+                Navigator.pop(context);
+              },
             ),
           ],
         ),
