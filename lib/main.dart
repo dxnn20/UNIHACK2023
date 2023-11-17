@@ -66,47 +66,52 @@ int _counter = 0;
 
 
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
+        backgroundColor:  Colors.blue[30],
+        child: Column(
+          children: [
+            //header
             const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF479FD5),
-              ),
-              child: Text(
-                'PlanIT',
-                style: TextStyle(
-                  color: Color(0xFFD7D7D7),
-                  fontSize: 24,
-                ),
-              ),
+                child: Icon(
+                  Icons.person,
+                  color: Colors.blue,
+                  size: 64,
+                )
             ),
+            //home list tile
             ListTile(
+              leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
+            //profile list tile
             ListTile(
-              title: const Text('My Events'),
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: const Text('My Profile'),
+              leading: const Icon(Icons.location_on),
+              title: const Text('Near me'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
+              leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
+            //logout list tile
+            Spacer(),
             ListTile(
-              title: const Text('Log Out'),
+              leading: const Icon(Icons.logout),
+              title: const Text('Logout'),
               onTap: () {
                 Navigator.pop(context);
               },
