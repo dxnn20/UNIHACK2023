@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:unihack/components/button.dart';
 
-class LoginPage extends StatefulWidget {
+import 'button.dart';
+
+class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-
+class _RegisterPageState extends State<RegisterPage> {
   //text controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-  Future Login() async {
-    
-  }
+  Future Login() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +26,18 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Spacer(),
-            const Text('Hello Again!',
-            style: TextStyle(
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
+            const Text(
+              'Are you new?',
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 5),
             const Text(
-              'Welcome back, you\'ve been missed!',
+              'Let\'s get you started!',
               style: TextStyle(
-              fontSize: 20,
+                fontSize: 20,
               ),
             ),
             const Padding(padding: EdgeInsets.all(30)),
@@ -50,21 +50,21 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.blueGrey[50],
                   border: Border.all(color: Colors.blue),
                 ),
-              child: TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: UnderlineInputBorder(
-                    borderSide: BorderSide(
+                child: TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(
                         color: Colors.black,
+                      ),
                     ),
+                    contentPadding: EdgeInsets.all(15.0),
                   ),
-                  contentPadding: EdgeInsets.all(15.0),
                 ),
               ),
-              ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 5),
             Container(
               width: 300,
               decoration: BoxDecoration(
@@ -86,27 +86,46 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
+            Container(
+              width: 300,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.blueGrey[50],
+                border: Border.all(color: Colors.blue),
+              ),
+              child: TextField(
+                controller: confirmPasswordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Confirm Password',
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
+                  contentPadding: EdgeInsets.all(15.0),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
 
             //sing in button
-            MyButton(
-                onTap: (){},
-                text: "Sign In"
-            ),
+            MyButton(onTap: () {}, text: "Sign Up"),
 
             const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Not a member?'),
+                Text('Already a member?'),
                 SizedBox(width: 5),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: const Text(
-                    'Register now!',
+                    'Login here!',
                     style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

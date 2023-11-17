@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';
-import 'maps_page.dart';
+import 'package:unihack/auth/login_or_register.dart';
 import 'components/drawer.dart';
 
 void main() {
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0x004682a9)),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: const LoginOrRegister(),
     );
   }
 }
@@ -43,7 +42,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State< MyHomePage> {
-int _counter = 0;
+int  _counter = 0;
 
   void _incrementCounter() {
     setState(() {
