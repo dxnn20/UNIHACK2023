@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp( const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,25 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PlanIT',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0x004682a9)),
         useMaterial3: true,
       ),
-      home: MyHomePage(title: 'PlanIT'),
+      home: const LoginPage(),
     );
   }
 }
@@ -50,63 +36,103 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      shadowColor: const Color(0xFF4682A9),
+      elevation: 5.0,
+      backgroundColor: const Color(0xFF479FD5),
+      title: Text(title),
+    );
+  }
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  int _counter = 0;
+class _MyHomePageState extends State< MyHomePage> {
+int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
-  }
+}
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Colors.deepPurple ,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        toolbarHeight: 70,
-        toolbarTextStyle: TextStyle(
-          fontSize: 100,
-          fontWeight: FontWeight.bold,
+      appBar: widget.buildAppBar(context),
+
+
+      bottomNavigationBar: BottomAppBar(
+        color: const Color(0xFF479FD5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.home),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.calendar_today),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.person),
+              onPressed: () {},
+            ),
+          ],
         ),
-        title: Text(widget.title),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
 
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _Card(),
-            _Card(),
-            _Card(),
-            _Card(),
-            _Card(),
-          ],
+
+        _Card(
+        title: 'Free Event',
+          description: 'Enjoy this amazing free event!',
+          isFree: true,
+          imagePath: 'assets/free_event_image.jpg',
+        ),
+
+        _Card(
+        title: 'Paid Event',
+        description: 'Don\'t miss out on this exclusive event.',
+        isFree: false,
+        imagePath: 'assets/paid_event_image.jpg',
+      ),
+
+      _Card(
+      title: 'Exciting Workshop',
+      description:
+      'Join us for a hands-on workshop where you can learn new skills and techniques. This is a fantastic opportunity to enhance your knowledge!',
+      isFree: false,
+      imagePath: 'assets/workshop_image.jpg',
+    ),
+
+    _Card(
+      title: 'Special Performance',
+      description: 'Experience a one-of-a-kind performance by talented artists.',
+      isFree: true,
+      imagePath: 'assets/special_performance_image.jpg',
+    ),
+
+    ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child:  Icon(Icons.add),
+        child:  const Icon(Icons.add),
       ),
 
     );
@@ -114,47 +140,103 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class _Card extends StatelessWidget {
+  final String title;
+  final String description;
+  final bool? isFree;
+  final String? imagePath;
+
+  const _Card({
+    Key? key,
+    required this.title,
+    required this.description,
+    this.isFree,
+    this.imagePath,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Card(
       // You can customize the appearance of the card using various properties
-      color: Colors.white, // Background color of the card
-      elevation: 4.0, // Shadow depth
+      color: const Color(0xFF479FD5),
+      elevation: 5.0,
+      shadowColor: const Color(0xFF4682A9),
+      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0), // Border radius
+        borderRadius: BorderRadius.circular(30.0),
       ),
       child: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(30.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const Text(
-              'Card Title',
-              style: TextStyle(
+             Text(
+              title,
+              style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 15.0, width: 300.0),
-            const Text('CARD DESCRIPTION', // Text to display
-              style: TextStyle(fontSize: 16.0),
+            const SizedBox(height: 15.0, width: 300.0),
+             Text(
+              description, // Text to display
+              style: const TextStyle(fontSize: 16.0),
             ),
+            if(isFree!)
+              Container(
+                padding: const EdgeInsets.all(5.0),
+                width: 100.0,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF479FF9),
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                ),
+                alignment: Alignment.center,
+
+              child: const Text(
+                'FREE',
+
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  overflow: TextOverflow.ellipsis,
+                  shadows: [
+                    Shadow(
+                      color: Color(0xFFE0E0E0),
+                      offset: Offset(2.0, 1.0),
+                      blurRadius: 20.0,
+                    ),
+                  ],
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFD7D7D7),
+                ),
+              ),
+              ),
             ButtonBar(
               alignment: MainAxisAlignment.start,
               children: <Widget>[
                 ElevatedButton(
+                  style:
+                  ElevatedButton.styleFrom(
+                      backgroundColor:  const Color(0xFF4682A9),
+                      elevation: 5
+                  ),
                   onPressed: (){
                     showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                      return EventDetailsSheet();
+                      return const EventDetailsSheet();
                       },
                     );
                   },
-                  child: Text('View'),
+                  child: const Text('View',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFD7D7D7),
+                    ),
+                  ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -163,32 +245,35 @@ class _Card extends StatelessWidget {
 }
 
 class EventDetailsSheet extends StatelessWidget {
+  const EventDetailsSheet({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return DraggableScrollableSheet(
+    return SizedBox(
+      child : DraggableScrollableSheet(
       initialChildSize: 0.8, // Initial size when opened
-      minChildSize: 0.2, // Minimum size when closed
+      minChildSize: 0.1, // Minimum size when closed
       maxChildSize: 1.0, // Maximum size when fully opened
-      expand: false, // Set to true if you want to expand the sheet initially
-      builder: (BuildContext context, ScrollController scrollController) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+      expand: true, // Set to true if you want to expand the sheet initially
+      builder: ( context,  scrollController) {
+        return SingleChildScrollView(
+          controller: scrollController,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.1,
+            child: ClipRRect(
+              clipBehavior: Clip.antiAlias,
+            borderRadius: const BorderRadius.all(Radius.circular(40.0)),
+            child: Image.asset(
+              'lib/POSTARE.png',
+              fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height * 0.5,
+              width: MediaQuery.of(context).size.width * 0.1,
+            ),
           ),
-          child: ListView.builder(
-            controller: scrollController,
-            itemCount: 20, // Adjust as needed
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                title: Text('Detail $index'),
-              );
-            },
           ),
         );
-      },
-      // Added physics property to allow full expansion
-      // ClampingScrollPhysics ensures the sheet can be scrolled to the top
+        },
+      ),
     );
   }
 }
