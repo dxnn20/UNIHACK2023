@@ -206,7 +206,7 @@ class _Card extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 15.0, width: 300.0),
+            const SizedBox(height: 20.0, width: 300.0),
              Text(
               description, // Text to display
               style: const TextStyle(fontSize: 16.0),

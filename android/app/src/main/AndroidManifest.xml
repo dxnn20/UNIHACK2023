@@ -3,6 +3,9 @@
         android:label="unihack"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCVY9tdlctdc5jVOS9PAZBRZqQiyJVdWD0"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
