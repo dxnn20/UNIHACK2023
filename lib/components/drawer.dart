@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:unihack/main.dart';
 import 'package:unihack/maps_page.dart';
 import 'package:unihack/profile_page.dart';
+import 'package:unihack/favorites_page.dart';
+import 'package:unihack/components/event.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -43,6 +45,22 @@ class AppDrawer extends StatelessWidget {
               );
             }
           ),
+
+          ListTile(
+            leading: const Icon(Icons.event),
+            title: const Text('Saved Events'),
+            onTap: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FavoritesPage(
+                          events: favoriteEvents
+                      )
+                  )
+              );
+            }
+          ),
+
           ListTile(
             leading: const Icon(Icons.person),
             title: const Text('Profile'),
@@ -50,6 +68,7 @@ class AppDrawer extends StatelessWidget {
 
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => ProfilePage(
+
                   )
                   )
               );

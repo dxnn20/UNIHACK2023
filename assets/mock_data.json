@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Event 1",
+    "description": "Description 1",
+    "location": "Location 1",
+    "date": "2023-01-01",
+    "time": "12:00 PM",
+    "image": "https://example.com/image1.jpg",
+    "free": true,
+    "category": "Category 1",
+    "isFavorite": true
+  },
+  {
+    "name": "Event 2",
+    "description": "Description 2",
+    "location": "Location 2",
+    "date": "2023-02-02",
+    "time": "2:30 PM",
+    "image": "https://example.com/image2.jpg",
+    "free": false,
+    "category": "Category 2",
+    "isFavorite": false
+  }
+]

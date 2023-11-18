@@ -7,7 +7,9 @@ class Event{
   final String time;
   final String? image;
   final bool free;
-  final String category;
+  final String? category;
+  bool isFavorite;
+  num likeCount;
 
   Event({
     required this.name,
@@ -17,6 +19,8 @@ class Event{
     required this.time,
     this.image,
     required this.free,
-    required this.category,
+    this.category,
+    this.isFavorite = false,
+    this.likeCount = 0
   });
 }

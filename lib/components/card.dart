@@ -17,7 +17,7 @@ class _EventCardState extends State<EventCard> {
   Widget build(BuildContext context) {
     return Card(
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+        borderRadius: BorderRadius.all(Radius.circular(35.0)),
       ),
       elevation: 5.0,
       margin: const EdgeInsets.all(15.0),
@@ -35,16 +35,22 @@ class _EventCardState extends State<EventCard> {
                 child: Image.asset(
                   'lib/POSTARE.png',
                   height: 300.0,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
               Positioned(
                 bottom: 20.0,
                 right: 0.0,
                 child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue[100],
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      bottomLeft: Radius.circular(10.0),
+                    ),
+                  ),
                   width: 300.0,
-                  color: Colors.black54,
                   padding: const EdgeInsets.symmetric(
                     vertical: 5.0,
                     horizontal: 20.0,
@@ -55,7 +61,6 @@ class _EventCardState extends State<EventCard> {
                       fontSize: 26.0,
                       color: Colors.white,
                     ),
-                    softWrap: true,
                     overflow: TextOverflow.fade,
                   ),
                 ),
@@ -63,37 +68,100 @@ class _EventCardState extends State<EventCard> {
             ],
           ),
           ListTile(
-            subtitle: Text(widget.event.location),
-            trailing: Text(widget.event.date),
+            subtitle: Text(
+              widget.event.location,
+              style: TextStyle(
+                color: Colors.black.withOpacity(0.7),
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            trailing: Text(
+                widget.event.date,
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 20.0,
+                ),
+            ),
           ),
           if (isExpanded)
             Padding(
-              padding: const EdgeInsets.all(.0),
+              padding: const EdgeInsets.all(0.0),
               child: Column(
                 children: [
-                  Text(widget.event.description),
+                  Container(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Text(
+                      widget.event.description,
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 10.0),
-                  Text('Time: ${widget.event.time}'),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: const EdgeInsets.only(
+                      top:40.0,
+                      left: 30.0,
+                      bottom: 0.0
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                          color: Colors.grey[300]!,
+                          width: 1.0,
+                        ),
+                      ),
+                    ),
+                    child: Text('Time: ${widget.event.time}',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 10.0),
                 ],
               ),
             ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
                   onPressed: () {
-
+                    setState(() {
+                      widget.event.isFavorite = !widget.event.isFavorite;
+                      widget.event.likeCount = widget.event.isFavorite
+                          ? widget.event.likeCount + 1
+                          : widget.event.likeCount - 1;
+                    });
                   },
-                  child: Icon(
-                    Icons.favorite,
-                    color: Colors.blue[100],
+                  style:ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      widget.event.isFavorite ? Colors.blue : Colors.white,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.favorite,
+                        color: widget.event.isFavorite ? Colors.red : Colors.blue[200]
+                      ),
+                      Text(
+                        widget.event.likeCount.toString(),
+                        style: TextStyle(
+                          color: Colors.blue[200],
+                        )
+                      ),
+                    ],
                   ),
                 ),
                 const Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(10.0),
                 ),
                   ElevatedButton(
                     onPressed: () {

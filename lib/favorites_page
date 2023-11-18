@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:lib/components/card.dart';
+
+class FavoritesPage extends StatefulWidget{
+  final List<CardModel> cards;
+  final Function(CardModel) onTap;
+
+  CardList({this.cards, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: cards.length,
+      itemBuilder: (context, index) {
+        return CardComponent(
+          card: cards[index],
+          onTap: () => onTap(cards[index]),
+        );
+      },
+    );
+  }
+}
