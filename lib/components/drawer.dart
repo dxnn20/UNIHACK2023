@@ -3,7 +3,6 @@ import 'package:unihack/main.dart';
 import 'package:unihack/maps_page.dart';
 import 'package:unihack/profile_page.dart';
 import 'package:unihack/favorites_page.dart';
-import 'package:unihack/components/event.dart';
 
 class AppDrawer extends StatelessWidget {
   @override

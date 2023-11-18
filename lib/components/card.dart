@@ -15,14 +15,17 @@ class _EventCardState extends State<EventCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        maxWidth: 30.0,
+      ),
+      child:Card(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(35.0)),
       ),
       elevation: 5.0,
       margin: const EdgeInsets.all(15.0),
       borderOnForeground: true,
-
       child: Column(
         children: [
           Stack(
@@ -131,6 +134,21 @@ class _EventCardState extends State<EventCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                if(widget.event.free)
+                  OutlinedButton(onPressed: (){},
+                      style: OutlinedButton.styleFrom(
+                      side: BorderSide(
+                        color: Colors.blue[200]!,
+                      ),
+                    ),
+                    child: Text(
+                      'FREE',
+                      style: TextStyle(
+                        color: Colors.blue[200],
+                      ),
+                    ),
+                  ),
+                Padding(padding: EdgeInsets.only(right: 10.0)),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -161,7 +179,7 @@ class _EventCardState extends State<EventCard> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.only(right:10.0),
                 ),
                   ElevatedButton(
                     onPressed: () {
@@ -181,6 +199,7 @@ class _EventCardState extends State<EventCard> {
           ),
         ],
       ),
+    )
     );
   }
 }

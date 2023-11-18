@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:unihack/auth/login_or_register.dart';
 import 'package:unihack/components/card.dart';
+import 'package:unihack/components/event.dart';
 import 'components/drawer.dart';
-import 'components/event.dart';
-import 'components/button.dart';
-import 'dart:convert';
 
-List<Event> events_mock = [
+List<Event> eventsmock = [
   Event(
     name: 'Event 1',
     description: 'This is a description of event 1',
@@ -66,7 +64,7 @@ List<Event> events_mock = [
 ];
 
 List<Event> get favoriteEvents =>
-    events_mock.where((event) => event.isFavorite ?? false).toList();
+    eventsmock.where((event) => event.isFavorite).toList();
 
 class User {
   final String name;
@@ -80,19 +78,7 @@ class User {
   });
 }
 
-//TO COMMUNICATE WITH FIREBASE
-// Future<List<Event>> getEventsFromFirebase() async {
-//   // Replace 'events' with your Firebase collection name
-//   final QuerySnapshot<Map<String, dynamic>> snapshot =
-//   await FirebaseFirestore.instance.collection('events').get();
-//
-//   return snapshot.docs.map((document) => Event.fromFirestore(document)).toList();
-// }
-
 void main() {
-  //DATABASE SHIT
-  //List<Event> events = await getEventsFromFirebase();
-
   runApp(const MyApp());
 }
 
@@ -138,10 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: widget.buildAppBar(context),
       drawer: AppDrawer(),
       body: ListView.builder(
-        itemCount: events_mock.length,
+        itemCount: eventsmock.length,
         itemBuilder: (context, index) {
           return EventCard(
-            event: events_mock[index],
+            event: eventsmock.elementAt(index),
           );
         },
       ),

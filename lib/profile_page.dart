@@ -1,7 +1,6 @@
   import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unihack/components/drawer.dart';
-import 'package:unihack/main.dart';
 
 class ProfilePage extends StatefulWidget {
 
