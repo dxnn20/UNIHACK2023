@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "371137694883",
+    "project_id": "unihack-database-58df5",
+    "storage_bucket": "unihack-database-58df5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371137694883:android:4935841e984755dc884316",
+        "android_client_info": {
+          "package_name": "com.example.unihack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2YZOnPj0t4SbPlCCkLJQ416m3Y2tXf4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371137694883:android:d547535e065c612e884316",
+        "android_client_info": {
+          "package_name": "com.example.unihack2023"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2YZOnPj0t4SbPlCCkLJQ416m3Y2tXf4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
