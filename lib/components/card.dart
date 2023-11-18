@@ -21,60 +21,81 @@ class _EventCardState extends State<EventCard> {
       ),
       elevation: 5.0,
       margin: const EdgeInsets.all(15.0),
+      borderOnForeground: true,
+
       child: Column(
         children: [
-          const Padding(
-              padding: EdgeInsets.all(15.0),
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
+                ),
+                child: Image.asset(
+                  'lib/POSTARE.png',
+                  height: 300.0,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                bottom: 20.0,
+                right: 0.0,
+                child: Container(
+                  width: 300.0,
+                  color: Colors.black54,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5.0,
+                    horizontal: 20.0,
+                  ),
+                  child: Text(
+                    widget.event.name,
+                    style: const TextStyle(
+                      fontSize: 26.0,
+                      color: Colors.white,
+                    ),
+                    softWrap: true,
+                    overflow: TextOverflow.fade,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(24.0),
-          child: SizedBox.fromSize(
-            size: const Size.fromRadius(150),
-            child: Image.asset(
-              //PLACEHOLDER IMAGE
-              'lib/POSTARE.png',
-              fit: BoxFit.cover
-            ),
-          ),
-        ),
-
           ListTile(
-            title: Text(widget.event.name),
             subtitle: Text(widget.event.location),
             trailing: Text(widget.event.date),
           ),
           if (isExpanded)
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(.0),
               child: Column(
                 children: [
                   Text(widget.event.description),
                   const SizedBox(height: 10.0),
-                  Text(widget.event.time),
-                  const SizedBox(height: 10.0),
+                  Text('Time: ${widget.event.time}'),
                   const SizedBox(height: 10.0),
                 ],
               ),
             ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+
+                  },
                   child: Icon(
                     Icons.favorite,
                     color: Colors.blue[100],
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    setState(() {
-                      isExpanded = !isExpanded;
-                    });
-                  },
-                  child: ElevatedButton(
+                const Padding(
+                  padding: const EdgeInsets.all(10.0),
+                ),
+                  ElevatedButton(
                     onPressed: () {
                       setState(() {
                         isExpanded = !isExpanded;
@@ -87,8 +108,6 @@ class _EventCardState extends State<EventCard> {
                       ),
                     ),
                   ),
-
-                ),
               ],
             ),
           ),
