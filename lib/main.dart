@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:unihack/auth/login_or_register.dart';
+import 'package:unihack/components/card.dart';
 import 'components/drawer.dart';
+import 'components/event.dart';
+import 'components/button.dart';
 
 class User {
   final String name;
@@ -62,41 +65,89 @@ class _MyHomePageState extends State< MyHomePage> {
 
       drawer: AppDrawer(),
 
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
-        _Card(
-        title: 'Free Event',
-          description: 'Enjoy this amazing free event!',
-          isFree: true,
-          imagePath: 'assets/free_event_image.jpg',
-        ),
-
-        _Card(
-        title: 'Paid Event',
-        description: 'Don\'t miss out on this exclusive event.',
-        isFree: false,
-        imagePath: 'assets/paid_event_image.jpg',
-      ),
-
-        _Card(
-      title: 'Exciting Workshop',
-      description:
-      'Join us for a hands-on workshop where you can learn new skills and techniques. This is a fantastic opportunity to enhance your knowledge!',
-      isFree: false,
-      imagePath: 'assets/workshop_image.jpg',
-    ),
-
-        _Card(
-        title: 'Special Performance',
-        description: 'Experience a one-of-a-kind performance by talented artists.',
-        isFree: true,
-        imagePath: 'assets/special_performance_image.jpg',
-    ),
-
+          EventCard(
+            event: Event(
+              name: 'Event 1',
+              description: 'This is a description of event 1',
+              location: 'Location 1',
+              date: '01/01/2021',
+              time: '12:00',
+              image: 'POSTARE.png',
+              category: 'Category 1',
+              free: true,
+            ),
+          ),
+          EventCard(
+            event: Event(
+              name: 'Event 2',
+              category: 'Category 2',
+              description: 'This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2This is a description of event 2',
+              location: 'Location 2',
+              date: '02/02/2021',
+              time: '13:00',
+              free: false,
+            ),
+          ),
+          EventCard(
+            event: Event(
+              category: 'Category 3',
+              name: 'Event 3',
+              description: 'This is a description of event 3',
+              location: 'Location 3',
+              date: '03/03/2021',
+              time: '14:00',
+              free: true,
+            ),
+          ),
+          EventCard(
+            event: Event(
+              category: 'Category 4',
+              name: 'Event 4',
+              description: 'This is a description of event 4',
+              location: 'Location 4',
+              date: '04/04/2021',
+              time: '15:00',
+              free: false,
+            ),
+          ),
+          EventCard(
+            event: Event(
+              category: 'Category 5',
+              name: 'Event 5',
+              description: 'This is a description of event 5',
+              location: 'Location 5',
+              date: '05/05/2021',
+              time: '16:00',
+              free: true,
+            ),
+          ),
+          EventCard(
+            event: Event(
+              category: 'Category 6',
+              name: 'Event 6',
+              description: 'This is a description of event 6',
+              location: 'Location 6',
+              date: '06/06/2021',
+              time: '17:00',
+              free: false,
+            ),
+          ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            const Text(
+              'That\'s it for now!',
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
     ],
         ),
       ),
@@ -106,145 +157,6 @@ class _MyHomePageState extends State< MyHomePage> {
         child:  const Icon(Icons.add),
       ),
 
-    );
-  }
-}
-
-class _Card extends StatelessWidget {
-  final String title;
-  final String description;
-  final bool? isFree;
-  final String? imagePath;
-
-  const _Card({
-    Key? key,
-    required this.title,
-    required this.description,
-    this.isFree,
-    this.imagePath,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      // You can customize the appearance of the card using various properties
-      color: const Color(0xFF479FD5),
-      elevation: 5.0,
-      shadowColor: const Color(0xFF4682A9),
-      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-             Text(
-              title,
-              style: const TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20.0, width: 300.0),
-             Text(
-              description, // Text to display
-              style: const TextStyle(fontSize: 16.0),
-            ),
-            if(isFree!)
-              Container(
-                padding: const EdgeInsets.all(5.0),
-                width: 100.0,
-                decoration: const BoxDecoration(
-                  color: Color(0xFF479FF9),
-                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                ),
-                alignment: Alignment.center,
-
-              child: const Text(
-                'FREE',
-
-                style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  overflow: TextOverflow.ellipsis,
-                  shadows: [
-                    Shadow(
-                      color: Color(0xFFE0E0E0),
-                      offset: Offset(2.0, 1.0),
-                      blurRadius: 20.0,
-                    ),
-                  ],
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFD7D7D7),
-                ),
-              ),
-              ),
-            ButtonBar(
-              alignment: MainAxisAlignment.start,
-              children: <Widget>[
-                ElevatedButton(
-                  style:
-                  ElevatedButton.styleFrom(
-                      backgroundColor:  const Color(0xFF4682A9),
-                      elevation: 5
-                  ),
-                  onPressed: (){
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext context) {
-                      return const EventDetailsSheet();
-                      },
-                    );
-                  },
-                  child: const Text('View',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFD7D7D7),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class EventDetailsSheet extends StatelessWidget {
-  const EventDetailsSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      child : DraggableScrollableSheet(
-      initialChildSize: 0.8, // Initial size when opened
-      minChildSize: 0.1, // Minimum size when closed
-      maxChildSize: 1.0, // Maximum size when fully opened
-      expand: true, // Set to true if you want to expand the sheet initially
-      builder: ( context,  scrollController) {
-        return SingleChildScrollView(
-          controller: scrollController,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.1,
-            child: ClipRRect(
-              clipBehavior: Clip.antiAlias,
-            borderRadius: const BorderRadius.all(Radius.circular(40.0)),
-            child: Image.asset(
-              'lib/POSTARE.png',
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height * 0.5,
-              width: MediaQuery.of(context).size.width * 0.1,
-            ),
-          ),
-          ),
-        );
-        },
-      ),
     );
   }
 }
